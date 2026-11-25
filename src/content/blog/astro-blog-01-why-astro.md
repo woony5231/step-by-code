@@ -1,11 +1,11 @@
 ---
 title: "블로그 직접 만들기 1편: Astro + Cloudflare Pages를 고른 이유"
 description: "블로그 서비스 대신 직접 만들기로 하고, 정적 사이트 생성기와 무료 호스팅을 고른 과정."
-pubDate: 2026-11-25
+pubDate: 2026-11-25T16:30:00+09:00
 category: "개발기록"
 tags: ["Astro", "Cloudflare", "블로그"]
 series: "블로그 직접 만들기"
-draft: true
+draft: false
 ---
 
 티스토리나 벨로그 같은 서비스도 있지만, 이번에는 블로그를 직접 만들기로 했다. 개발 블로그라면 블로그 자체도 하나의 프로젝트가 될 수 있기 때문이다.
@@ -28,7 +28,7 @@ draft: true
 
 ## 호스팅: Cloudflare Pages
 
-GitHub 저장소를 연결해 두면 push할 때마다 자동으로 빌드하고 배포해 준다. 무료 플랜으로 시작하고, 주소는 `step-by-code.pages.dev`를 쓸 예정이다.
+GitHub 저장소를 연결해 두면 push할 때마다 자동으로 빌드하고 배포해 준다. 무료 플랜으로 시작했고, 주소는 `step-by-code-7dd.pages.dev`가 됐다. (`step-by-code`는 이미 누가 쓰고 있어서 뒤에 글자가 붙었다.)
 
 ## DB는 필요 없다
 
@@ -46,5 +46,3 @@ GitHub 저장소를 연결해 두면 push할 때마다 자동으로 빌드하고
 ## 다음 편
 
 GitHub 저장소를 만들고 Cloudflare Pages에 첫 배포를 하는 과정.
-
-> [수정 필요] 직접 써 보면서 느낀 점을 추가해 주세요.

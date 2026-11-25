@@ -1,10 +1,10 @@
 ---
 title: "npm create astro가 'Unable to connect to the internet'으로 멈출 때"
 description: "프록시 환경에서 npm 설치는 되는데 create-astro만 실패한 이유와 우회 방법."
-pubDate: 2026-11-25
+pubDate: 2026-11-25T17:20:00+09:00
 category: "오답노트"
 tags: ["Astro", "npm", "프록시"]
-draft: true
+draft: false
 ---
 
 ## 증상
@@ -45,7 +45,7 @@ npm install astro @astrojs/mdx @astrojs/rss @astrojs/sitemap
 
 ## 참고: 환경변수로 프록시 지정하기
 
-같은 cmd 창에서 환경변수로 프록시를 알려 주는 방법도 있다. [수정 필요: 시도했다면 결과를 적어 주세요]
+같은 cmd 창에서 환경변수로 프록시를 알려 주는 방법도 있다. 이번에는 시도하지 않아서 효과는 확인하지 못했다. 다음에 같은 문제가 생기면 먼저 해 볼 생각이다.
 
 ```bash
 set HTTP_PROXY=<프록시 주소>
