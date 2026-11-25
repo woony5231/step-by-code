@@ -2,7 +2,7 @@
 export const SITE_TITLE = '차근차근 코딩';
 export const SITE_DESCRIPTION =
   '공공기관 웹 개발자의 트러블슈팅, 공부 노트, 사이드 프로젝트 개발기.';
-export const GITHUB_URL = 'https://github.com/'; // TODO: 내 GitHub 주소로 변경
+export const GITHUB_URL = 'https://github.com/woony5231';
 export const POSTS_PER_PAGE = 10;
 
 // 카테고리: 글 머리말(frontmatter)의 category 값 → 주소(slug)
