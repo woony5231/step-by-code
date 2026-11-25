@@ -1,0 +1,38 @@
+---
+import { CATEGORIES } from '../consts';
+import { getPosts, tagSlug } from '../utils';
+
+const posts = await getPosts();
+const categoryCounts = CATEGORIES.map((c) => ({
+  ...c,
+  count: posts.filter((p) => p.data.category === c.name).length,
+}));
+const tagCounts = new Map<string, number>();
+for (const p of posts) for (const t of p.data.tags) tagCounts.set(t, (tagCounts.get(t) ?? 0) + 1);
+const topTags = [...tagCounts.entries()].sort((a, b) => b[1] - a[1]).slice(0, 12);
+const series = [...new Set(posts.map((p) => p.data.series).filter(Boolean))] as string[];
+---
+<aside aria-label="사이드바">
+  <section class="box">
+    <h2>카테고리</h2>
+    <ul>
+      {categoryCounts.map((c) => (
+        <li><a href={`/category/${c.slug}/`}><span>{c.name}</span><span class="count">{c.count}</span></a></li>
+      ))}
+    </ul>
+  </section>
+  {series.length > 0 && (
+    <section class="box">
+      <h2>연재 중인 시리즈</h2>
+      <ul>{series.map((s) => <li><span style="display:block;padding:8px 0">{s}</span></li>)}</ul>
+    </section>
+  )}
+  {topTags.length > 0 && (
+    <section>
+      <h2 style="margin:0 0 12px;font-size:16px">태그</h2>
+      <div class="tags">
+        {topTags.map(([t]) => <a class="tag-outline" href={`/tags/${tagSlug(t)}/`}>#{t}</a>)}
+      </div>
+    </section>
+  )}
+</aside>

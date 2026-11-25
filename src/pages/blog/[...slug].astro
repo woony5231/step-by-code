@@ -1,0 +1,112 @@
+---
+// 글 상세
+import type { GetStaticPaths } from 'astro';
+import { render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getPosts, formatDate, readingMinutes, tagSlug, type Post } from '../../utils';
+import { categorySlug } from '../../consts';
+
+export const getStaticPaths = (async () => {
+  const posts = await getPosts(); // 최신순
+  return posts.map((post, i) => ({
+    params: { slug: post.id },
+    props: { post, newer: posts[i - 1], older: posts[i + 1], all: posts },
+  }));
+}) satisfies GetStaticPaths;
+
+interface Props {
+  post: Post;
+  newer?: Post;
+  older?: Post;
+  all: Post[];
+}
+const { post, newer, older, all } = Astro.props;
+const { Content, headings } = await render(post);
+const { title, description, pubDate, updatedDate, category, tags, draft } = post.data;
+const toc = headings.filter((h) => h.depth === 2 || h.depth === 3);
+const sameCategory = all
+  .filter((p) => p.data.category === category && p.id !== post.id)
+  .slice(0, 5);
+---
+<BaseLayout title={title} description={description} type="article">
+  <div class="container with-sidebar">
+    <article class="content post">
+      <nav class="breadcrumb" aria-label="위치">
+        <a href="/">홈</a> / <a href={`/category/${categorySlug(category)}/`}>{category}</a>
+      </nav>
+      <div class="post-head">
+        <h1 class="post-title">{title}</h1>
+        <div class="post-meta">
+          <time datetime={pubDate.toISOString()}>{formatDate(pubDate)} 작성</time>
+          {updatedDate && <><span>·</span><span>{formatDate(updatedDate)} 수정</span></>}
+          <span>·</span><span>{readingMinutes(post.body)}분 읽기</span>
+          {draft && <span class="draft-badge">초안 (배포되지 않음)</span>}
+        </div>
+        {tags.length > 0 && (
+          <div class="tags">{tags.map((t) => <a class="tag" href={`/tags/${tagSlug(t)}/`}>#{t}</a>)}</div>
+        )}
+      </div>
+
+      <div class="prose">
+        <Content />
+      </div>
+
+      {(older || newer) && (
+        <nav class="post-nav" aria-label="이전 다음 글">
+          {older && (
+            <a href={`/blog/${older.id}/`}>
+              <span class="label">← 이전 글</span><span class="title">{older.data.title}</span>
+            </a>
+          )}
+          {newer && (
+            <a class="next" href={`/blog/${newer.id}/`}>
+              <span class="label">다음 글 →</span><span class="title">{newer.data.title}</span>
+            </a>
+          )}
+        </nav>
+      )}
+      <p class="comment-placeholder">댓글은 2차 오픈 때 추가됩니다.</p>
+    </article>
+
+    <aside aria-label="목차와 관련 글">
+      {toc.length > 0 && (
+        <nav class="toc" aria-label="이 글의 목차">
+          <h2>목차</h2>
+          <ol>
+            {toc.map((h) => <li class={`depth-${h.depth}`}><a href={`#${h.slug}`}>{h.text}</a></li>)}
+          </ol>
+        </nav>
+      )}
+      {sameCategory.length > 0 && (
+        <section class="box">
+          <h2>같은 카테고리 글</h2>
+          <ul>{sameCategory.map((p) => <li><a href={`/blog/${p.id}/`}>{p.data.title}</a></li>)}</ul>
+        </section>
+      )}
+    </aside>
+  </div>
+</BaseLayout>
+
+<script>
+  // 코드 블록마다 '복사' 버튼 추가
+  document.querySelectorAll('.prose pre').forEach((pre) => {
+    const wrap = document.createElement('div');
+    wrap.className = 'code-wrap';
+    pre.parentNode?.insertBefore(wrap, pre);
+    wrap.appendChild(pre);
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'copy-btn';
+    btn.textContent = '복사';
+    btn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(pre.textContent ?? '');
+        btn.textContent = '복사됨';
+      } catch {
+        btn.textContent = '실패';
+      }
+      setTimeout(() => (btn.textContent = '복사'), 1500);
+    });
+    wrap.appendChild(btn);
+  });
+</script>

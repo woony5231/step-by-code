@@ -1,0 +1,45 @@
+---
+// 홈: 최신 글 목록 + 페이지 번호 ( / , /2/ , /3/ ... )
+import type { GetStaticPaths } from 'astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PostCard from '../components/PostCard.astro';
+import Sidebar from '../components/Sidebar.astro';
+import { getPosts } from '../utils';
+import { POSTS_PER_PAGE } from '../consts';
+
+export const getStaticPaths = (async ({ paginate }) => {
+  const posts = await getPosts();
+  return paginate(posts, { pageSize: POSTS_PER_PAGE });
+}) satisfies GetStaticPaths;
+
+const { page } = Astro.props;
+const pageNumbers = Array.from({ length: page.lastPage }, (_, i) => i + 1);
+const pageHref = (n: number) => (n === 1 ? '/' : `/${n}/`);
+---
+<BaseLayout title={page.currentPage === 1 ? undefined : `${page.currentPage}페이지`}>
+  <div class="container">
+    {page.currentPage === 1 && (
+      <section class="hero">
+        <p class="hero-kicker">// 오늘도 한 줄씩</p>
+        <h1>막혔던 문제와 배운 것을<br />차근차근 기록합니다</h1>
+        <p>공공기관 웹 개발자의 트러블슈팅, 공부 노트, 사이드 프로젝트 개발기.</p>
+      </section>
+    )}
+    <div class="with-sidebar" style={page.currentPage === 1 ? undefined : 'padding-top:48px'}>
+      <section class="content" aria-labelledby="latest">
+        <h2 id="latest" class="section-title">최신 글</h2>
+        {page.data.length === 0 && <p>아직 글이 없습니다.</p>}
+        {page.data.map((post) => <PostCard post={post} />)}
+        {page.lastPage > 1 && (
+          <nav class="pagination" aria-label="페이지">
+            {pageNumbers.map((n) => (
+              <a href={pageHref(n)} aria-current={n === page.currentPage ? 'page' : undefined}>{n}</a>
+            ))}
+            {page.url.next && <a href={page.url.next}>다음</a>}
+          </nav>
+        )}
+      </section>
+      <Sidebar />
+    </div>
+  </div>
+</BaseLayout>

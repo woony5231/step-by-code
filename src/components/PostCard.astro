@@ -1,0 +1,26 @@
+---
+import type { Post } from '../utils';
+import { formatDate, readingMinutes, tagSlug } from '../utils';
+import { categorySlug } from '../consts';
+
+interface Props {
+  post: Post;
+}
+const { post } = Astro.props;
+const { title, description, pubDate, category, tags, draft } = post.data;
+---
+<article class="post-card">
+  <div class="post-meta">
+    <a class="cat" href={`/category/${categorySlug(category)}/`}>{category}</a>
+    <span>·</span><time datetime={pubDate.toISOString()}>{formatDate(pubDate)}</time>
+    <span>·</span><span>{readingMinutes(post.body)}분</span>
+    {draft && <span class="draft-badge">초안</span>}
+  </div>
+  <h3><a href={`/blog/${post.id}/`}>{title}</a></h3>
+  <p>{description}</p>
+  {tags.length > 0 && (
+    <div class="tags">
+      {tags.map((tag) => <a class="tag" href={`/tags/${tagSlug(tag)}/`}>#{tag}</a>)}
+    </div>
+  )}
+</article>
