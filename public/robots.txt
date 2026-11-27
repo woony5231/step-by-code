@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://step-by-code-7dd.pages.dev/sitemap-index.xml
+Sitemap: https://chagun.pages.dev/sitemap-index.xml
