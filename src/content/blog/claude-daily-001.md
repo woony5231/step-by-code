@@ -23,7 +23,7 @@ draft: false
 5. **카테고리**: 클로드 일일기록, 개발기록, 오답노트, 공부노트, 개발환경·도구
 6. **프로젝트 생성**: `npm create astro`가 프록시 때문에 실패해서, npm으로 직접 설치하고 나머지 파일은 Claude가 작성했다.
 7. **GitHub 업로드**: 저장소 `step-by-code`를 만들고 첫 push.
-8. **첫 배포**: Cloudflare Pages에 연결해서 [step-by-code-7dd.pages.dev](https://step-by-code-7dd.pages.dev)로 공개. 이후로는 push만 하면 1~2분 뒤 자동으로 반영된다.
+8. **첫 배포**: Cloudflare Pages에 연결해서 [chagun.pages.dev](https://chagun.pages.dev)로 공개. 이후로는 push만 하면 1~2분 뒤 자동으로 반영된다.
 
 ## 오늘 배운 것
 
