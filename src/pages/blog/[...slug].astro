@@ -43,6 +43,7 @@ const sameCategory = all
           <time datetime={pubDate.toISOString()}>{formatDate(pubDate)} 작성</time>
           {updatedDate && <><span>·</span><span>{formatDate(updatedDate)} 수정</span></>}
           <span>·</span><span>{readingMinutes(post.body)}분 읽기</span>
+          <span id="views-wrap" data-slug={post.id} hidden><span>·</span> <span id="views"></span></span>
           {draft && <span class="draft-badge">초안 (배포되지 않음)</span>}
         </div>
         {tags.length > 0 && (
@@ -131,4 +132,27 @@ const sameCategory = all
     });
     wrap.appendChild(btn);
   });
+</script>
+
+<script is:inline>
+  // 조회수: 같은 브라우저는 하루에 한 번만 올린다. 서버가 없거나 실패하면 조용히 숨겨 둔다.
+  (function () {
+    var wrap = document.getElementById('views-wrap');
+    if (!wrap) return;
+    var slug = wrap.dataset.slug;
+    var key = 'viewed:' + slug;
+    var today = new Date().toISOString().slice(0, 10);
+    var seen = null;
+    try { seen = localStorage.getItem(key); } catch (e) {}
+    var method = seen === today ? 'GET' : 'POST';
+    fetch('/api/views/' + encodeURIComponent(slug), { method: method })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (d) {
+        if (!d || typeof d.views !== 'number') return;
+        document.getElementById('views').textContent = '조회 ' + d.views.toLocaleString('ko-KR');
+        wrap.hidden = false;
+        if (method === 'POST') { try { localStorage.setItem(key, today); } catch (e) {} }
+      })
+      .catch(function () {});
+  })();
 </script>
