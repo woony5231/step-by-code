@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 250" width="720" height="250" role="img" aria-label="요즘 뜨는 오픈소스는 'AI 에이전트' 쪽">
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#374151"/></marker></defs>
+<rect width="720" height="250" rx="14" fill="#f8fafc"/>
+<text x="24" y="34" font-family="Pretendard, 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', sans-serif" font-size="18" font-weight="700" fill="#111827">요즘 뜨는 오픈소스는 'AI 에이전트' 쪽</text>
+<rect x="12" y="60" width="164" height="110" rx="10" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+<text x="94.0" y="86" text-anchor="middle" font-family="Pretendard, 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', sans-serif" font-size="15" font-weight="700" fill="#111827">OpenClaw</text>
+<text x="94.0" y="107" text-anchor="middle" font-family="Pretendard, 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', sans-serif" font-size="12.5" fill="#374151">내 기기에서 돌리는</text>
+<text x="94.0" y="124" text-anchor="middle" font-family="Pretendard, 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', sans-serif" font-size="12.5" fill="#374151">개인 AI 비서</text>
+<rect x="190" y="60" width="164" height="110" rx="10" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+<text x="272.0" y="86" text-anchor="middle" font-family="Pretendard, 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', sans-serif" font-size="15" font-weight="700" fill="#111827">Firecrawl</text>
+<text x="272.0" y="107" text-anchor="middle" font-family="Pretendard, 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', sans-serif" font-size="12.5" fill="#374151">웹페이지를 AI가 읽기</text>
+<text x="272.0" y="124" text-anchor="middle" font-family="Pretendard, 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', sans-serif" font-size="12.5" fill="#374151">좋게 바꿔 주는 API</text>
+<rect x="368" y="60" width="164" height="110" rx="10" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+<text x="450.0" y="86" text-anchor="middle" font-family="Pretendard, 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', sans-serif" font-size="15" font-weight="700" fill="#111827">superpowers</text>
+<text x="450.0" y="107" text-anchor="middle" font-family="Pretendard, 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', sans-serif" font-size="12.5" fill="#374151">AI에게 일하는 순서를</text>
+<text x="450.0" y="124" text-anchor="middle" font-family="Pretendard, 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', sans-serif" font-size="12.5" fill="#374151">가르치는 스킬 모음</text>
+<rect x="546" y="60" width="162" height="110" rx="10" fill="#e5e7eb" stroke="#4b5563" stroke-width="2"/>
+<text x="627.0" y="86" text-anchor="middle" font-family="Pretendard, 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', sans-serif" font-size="15" font-weight="700" fill="#111827">CLI-Anything</text>
+<text x="627.0" y="107" text-anchor="middle" font-family="Pretendard, 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', sans-serif" font-size="12.5" fill="#374151">기존 프로그램을 AI가</text>
+<text x="627.0" y="124" text-anchor="middle" font-family="Pretendard, 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', sans-serif" font-size="12.5" fill="#374151">조종할 수 있게 변환</text>
+<text x="24" y="214" font-family="Pretendard, 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', sans-serif" font-size="12.5" fill="#4b5563">공통점: 사람이 시키는 대로 답만 하는 AI가 아니라, 스스로 도구를 쓰며 일하는 AI(에이전트)를 돕는다</text>
+</svg>
