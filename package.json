@@ -4,7 +4,7 @@
   "description": "차근차근 코딩 - 개발 블로그",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "astro build && pagefind --site dist",
     "preview": "astro preview",
     "astro": "astro"
   },
@@ -17,5 +17,8 @@
     "@astrojs/rss": "^4.0.19",
     "@astrojs/sitemap": "^3.7.6",
     "astro": "^7.4.13"
+  },
+  "devDependencies": {
+    "pagefind": "^1.6.0"
   }
 }

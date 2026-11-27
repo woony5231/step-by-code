@@ -33,20 +33,20 @@ const sameCategory = all
 ---
 <BaseLayout title={title} description={description} type="article">
   <div class="container with-sidebar">
-    <article class="content post">
-      <nav class="breadcrumb" aria-label="위치">
+    <article class="content post" data-pagefind-body>
+      <nav class="breadcrumb" aria-label="위치" data-pagefind-ignore>
         <a href="/">홈</a> / <a href={`/category/${categorySlug(category)}/`}>{category}</a>
       </nav>
       <div class="post-head">
         <h1 class="post-title">{title}</h1>
-        <div class="post-meta">
+        <div class="post-meta" data-pagefind-ignore>
           <time datetime={pubDate.toISOString()}>{formatDate(pubDate)} 작성</time>
           {updatedDate && <><span>·</span><span>{formatDate(updatedDate)} 수정</span></>}
           <span>·</span><span>{readingMinutes(post.body)}분 읽기</span>
           {draft && <span class="draft-badge">초안 (배포되지 않음)</span>}
         </div>
         {tags.length > 0 && (
-          <div class="tags">{tags.map((t) => <a class="tag" href={`/tags/${tagSlug(t)}/`}>#{t}</a>)}</div>
+          <div class="tags" data-pagefind-ignore>{tags.map((t) => <a class="tag" href={`/tags/${tagSlug(t)}/`}>#{t}</a>)}</div>
         )}
       </div>
 
@@ -55,7 +55,7 @@ const sameCategory = all
       </div>
 
       {series && (
-        <nav class="series-box" aria-label="시리즈 글 목록">
+        <nav class="series-box" aria-label="시리즈 글 목록" data-pagefind-ignore>
           <p class="series-head">
             <span class="series-kicker">시리즈</span>
             <a href={`/series/${seriesSlug(series)}/`}>{series}</a>
@@ -74,7 +74,7 @@ const sameCategory = all
       )}
 
       {(older || newer) && (
-        <nav class="post-nav" aria-label="이전 다음 글">
+        <nav class="post-nav" aria-label="이전 다음 글" data-pagefind-ignore>
           {older && (
             <a href={`/blog/${older.id}/`}>
               <span class="label">← 이전 글</span><span class="title">{older.data.title}</span>

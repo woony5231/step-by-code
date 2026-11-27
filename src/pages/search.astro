@@ -1,0 +1,54 @@
+---
+// 글 검색: 빌드할 때 pagefind가 만든 색인(/pagefind/)을 브라우저에서 읽는다
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="검색" description="블로그 글 검색">
+  <div class="container" style="padding:40px 24px">
+    <h1 style="margin:0 0 16px">검색</h1>
+    <div id="search"></div>
+    <p id="search-dev-note" hidden style="color:var(--text-sub)">
+      검색은 <code>npm run build</code>로 만든 사이트에서만 동작해요. 개발 서버(<code>npm run dev</code>)에서는 보이지 않습니다.
+    </p>
+  </div>
+</BaseLayout>
+
+<link rel="stylesheet" href="/pagefind/pagefind-ui.css" onerror="this.remove()" />
+<script is:inline>
+  (function () {
+    var s = document.createElement('script');
+    s.src = '/pagefind/pagefind-ui.js';
+    s.onload = function () {
+      new PagefindUI({
+        element: '#search',
+        showSubResults: false,
+        showImages: false,
+        resetStyles: false,
+        translations: {
+          placeholder: '검색어를 입력하세요',
+          clear_search: '지우기',
+          load_more: '더 보기',
+          search_label: '글 검색',
+          filters_label: '필터',
+          zero_results: '[SEARCH_TERM]에 대한 결과가 없어요',
+          many_results: '[COUNT]개의 글을 찾았어요 ([SEARCH_TERM])',
+          one_result: '[COUNT]개의 글을 찾았어요 ([SEARCH_TERM])',
+          searching: '[SEARCH_TERM] 찾는 중...',
+        },
+      });
+    };
+    s.onerror = function () { document.getElementById('search-dev-note').hidden = false; };
+    document.head.appendChild(s);
+  })();
+</script>
+<style is:global>
+  #search {
+    --pagefind-ui-scale: 1;
+    --pagefind-ui-primary: var(--accent);
+    --pagefind-ui-text: var(--text);
+    --pagefind-ui-background: var(--surface);
+    --pagefind-ui-border: var(--border);
+    --pagefind-ui-border-width: 1px;
+    --pagefind-ui-border-radius: 8px;
+    --pagefind-ui-font: inherit;
+  }
+</style>
