@@ -1,0 +1,69 @@
+---
+// 블로그 통계: 전체 조회수, 최근 14일, 글별 조회수 (조회수 서버 /api/stats 에서 읽는다)
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="통계" description="블로그 조회수 통계" noindex>
+  <div class="container" style="padding:40px 24px;max-width:860px">
+    <h1 style="margin:0 0 6px">통계</h1>
+    <p style="color:var(--text-sub);margin:0 0 24px">글 조회수를 모아 보여 줘요. 같은 브라우저는 하루 한 번만 세고, 봇은 세지 않아요.</p>
+
+    <p id="stats-msg" style="color:var(--text-sub)">불러오는 중...</p>
+
+    <div id="stats-body" hidden>
+      <div class="stat-total"><span class="stat-num" id="stat-total">0</span><span>전체 조회수</span></div>
+
+      <h2 style="margin:32px 0 4px;font-size:1.1rem">최근 14일</h2>
+      <p style="color:var(--text-muted);font-size:.85rem;margin:0 0 12px">날짜별 조회수는 이 기능을 켠 날부터 쌓여요.</p>
+      <div class="stat-chart" id="stat-chart" role="img" aria-label="최근 14일 날짜별 조회수 그래프"></div>
+
+      <h2 style="margin:32px 0 12px;font-size:1.1rem">글별 조회수</h2>
+      <ol class="stat-list" id="stat-list"></ol>
+    </div>
+  </div>
+</BaseLayout>
+
+<script is:inline>
+  (function () {
+    var msg = document.getElementById('stats-msg');
+    function esc(t) { var d = document.createElement('div'); d.textContent = t; return d.innerHTML; }
+    function fmt(n) { return Number(n).toLocaleString('ko-KR'); }
+    fetch('/api/stats')
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (d) {
+        if (!d || !d.enabled) {
+          msg.textContent = '통계를 불러올 수 없어요. 조회수 저장소(KV)가 연결되어 있는지 확인해 주세요.';
+          return;
+        }
+        msg.hidden = true;
+        document.getElementById('stats-body').hidden = false;
+        document.getElementById('stat-total').textContent = fmt(d.total);
+
+        var max = Math.max.apply(null, d.days.map(function (x) { return x.views; }).concat([1]));
+        document.getElementById('stat-chart').innerHTML = d.days.map(function (x, i) {
+          var h = Math.round((x.views / max) * 100);
+          return '<div class="bar-col"><span class="bar-val">' + (x.views ? fmt(x.views) : '') + '</span>' +
+            '<div class="bar" style="height:' + Math.max(h, x.views ? 4 : 1) + '%"></div>' +
+            '<span class="bar-day">' + ((d.days.length - 1 - i) % 2 === 0 ? x.date.slice(5).replace('-', '/') : '') + '</span></div>';
+        }).join('');
+
+        document.getElementById('stat-list').innerHTML = d.posts.map(function (p) {
+          return '<li><a href="/blog/' + encodeURIComponent(p.id) + '/">' + esc(p.title) + '</a><span>' + fmt(p.views) + '</span></li>';
+        }).join('');
+      })
+      .catch(function () { msg.textContent = '통계를 불러오지 못했어요.'; });
+  })();
+</script>
+
+<style is:global>
+  .stat-total { display: flex; align-items: baseline; gap: 10px; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 18px 20px; }
+  .stat-num { font-size: 2.2rem; font-weight: 700; color: var(--accent); }
+  .stat-chart { display: flex; align-items: flex-end; gap: 6px; height: 180px; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 14px 10px 8px; }
+  .bar-col { flex: 1; min-width: 0; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; gap: 4px; }
+  .bar { width: 100%; max-width: 28px; background: var(--accent); border-radius: 4px 4px 0 0; }
+  .bar-val { font-size: .72rem; color: var(--text-sub); }
+  .bar-day { font-size: .68rem; color: var(--text-muted); white-space: nowrap; min-height: 1em; }
+  .stat-list { list-style: none; margin: 0; padding: 0; border: 1px solid var(--border); border-radius: 10px; background: var(--surface); }
+  .stat-list li { display: flex; justify-content: space-between; gap: 16px; padding: 12px 16px; border-bottom: 1px solid var(--border); }
+  .stat-list li:last-child { border-bottom: 0; }
+  .stat-list li span { font-weight: 700; color: var(--accent); flex: none; }
+</style>

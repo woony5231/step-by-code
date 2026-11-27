@@ -6,7 +6,7 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   // Cloudflare Pages 주소 (프로젝트 이름이 바뀌면 여기도 수정)
   site: 'https://chagun.pages.dev',
-  integrations: [mdx(), sitemap()],
+  integrations: [mdx(), sitemap({ filter: (page) => !page.includes('/stats') })],
   markdown: {
     shikiConfig: {
       theme: 'github-dark',

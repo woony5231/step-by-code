@@ -16,8 +16,8 @@ async function postExists(env, request, slug) {
   try {
     const res = await env.ASSETS.fetch(new URL('/posts.json', request.url));
     if (!res.ok) return false;
-    const slugs = await res.json();
-    return slugs.includes(slug);
+    const posts = await res.json();
+    return posts.some((p) => p.id === slug);
   } catch {
     return false;
   }
@@ -40,6 +40,10 @@ export async function onRequest({ request, env, params }) {
   if (method === 'POST' && !BOT.test(request.headers.get('User-Agent') ?? '')) {
     views += 1;
     await env.VIEWS.put(key, String(views));
+    // 하루 전체 조회수도 같이 센다 (통계 화면의 날짜별 그래프용, 한국 시간 기준)
+    const dayKey = `daily:${new Date(Date.now() + 9 * 3600 * 1000).toISOString().slice(0, 10)}`;
+    const day = parseInt((await env.VIEWS.get(dayKey)) ?? '0', 10) || 0;
+    await env.VIEWS.put(dayKey, String(day + 1));
   }
   return json({ views });
 }

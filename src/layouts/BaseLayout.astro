@@ -6,9 +6,10 @@ interface Props {
   title?: string;
   description?: string;
   type?: 'website' | 'article';
+  noindex?: boolean; // 검색 결과에 나오지 않게 할 페이지
 }
 
-const { title, description = SITE_DESCRIPTION, type = 'website' } = Astro.props;
+const { title, description = SITE_DESCRIPTION, type = 'website', noindex = false } = Astro.props;
 const fullTitle = title ? `${title} | ${SITE_TITLE}` : SITE_TITLE;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 // 썸네일은 반드시 전체 주소(https://...)여야 SNS가 읽을 수 있다
@@ -30,6 +31,7 @@ const nav = [
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex" />}
     <link rel="canonical" href={canonical} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="alternate" type="application/rss+xml" title={SITE_TITLE} href={new URL('rss.xml', Astro.site)} />
@@ -92,6 +94,7 @@ const nav = [
           <a href="/rss.xml">RSS</a>
           <a href={GITHUB_URL}>GitHub</a>
           <a href="/about/">소개</a>
+          <a href="/stats/">통계</a>
         </nav>
       </div>
     </footer>
