@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 250" width="720" height="250" role="img" aria-label="블로그 주소를 바꿀 때 고친 곳">
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#374151"/></marker></defs>
+<rect width="720" height="250" rx="14" fill="#f8fafc"/>
+<text x="24" y="34" font-family="Pretendard, 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', sans-serif" font-size="18" font-weight="700" fill="#111827">블로그 주소를 바꿀 때 고친 곳</text>
+<rect x="12" y="60" width="128" height="110" rx="10" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+<text x="76.0" y="86" text-anchor="middle" font-family="Pretendard, 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', sans-serif" font-size="15" font-weight="700" fill="#111827">새 프로젝트</text>
+<text x="76.0" y="107" text-anchor="middle" font-family="Pretendard, 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', sans-serif" font-size="12.5" fill="#374151">Cloudflare에</text>
+<text x="76.0" y="124" text-anchor="middle" font-family="Pretendard, 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', sans-serif" font-size="12.5" fill="#374151">chagun 만들기</text>
+<rect x="154" y="60" width="128" height="110" rx="10" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+<text x="218.0" y="86" text-anchor="middle" font-family="Pretendard, 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', sans-serif" font-size="15" font-weight="700" fill="#111827">사이트 설정</text>
+<text x="218.0" y="107" text-anchor="middle" font-family="Pretendard, 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', sans-serif" font-size="12.5" fill="#374151">astro.config.mjs</text>
+<text x="218.0" y="124" text-anchor="middle" font-family="Pretendard, 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', sans-serif" font-size="12.5" fill="#374151">robots.txt</text>
+<rect x="296" y="60" width="128" height="110" rx="10" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+<text x="360.0" y="86" text-anchor="middle" font-family="Pretendard, 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', sans-serif" font-size="15" font-weight="700" fill="#111827">공유 썸네일</text>
+<text x="360.0" y="107" text-anchor="middle" font-family="Pretendard, 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', sans-serif" font-size="12.5" fill="#374151">그림 속 주소</text>
+<text x="360.0" y="124" text-anchor="middle" font-family="Pretendard, 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', sans-serif" font-size="12.5" fill="#374151">문구 다시 만들기</text>
+<rect x="438" y="60" width="128" height="110" rx="10" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+<text x="502.0" y="86" text-anchor="middle" font-family="Pretendard, 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', sans-serif" font-size="15" font-weight="700" fill="#111827">글 속 링크</text>
+<text x="502.0" y="107" text-anchor="middle" font-family="Pretendard, 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', sans-serif" font-size="12.5" fill="#374151">일일기록 #1의</text>
+<text x="502.0" y="124" text-anchor="middle" font-family="Pretendard, 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', sans-serif" font-size="12.5" fill="#374151">배포 링크</text>
+<rect x="580" y="60" width="128" height="110" rx="10" fill="#e5e7eb" stroke="#4b5563" stroke-width="2"/>
+<text x="644.0" y="86" text-anchor="middle" font-family="Pretendard, 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', sans-serif" font-size="15" font-weight="700" fill="#111827">옛 주소 정리</text>
+<text x="644.0" y="107" text-anchor="middle" font-family="Pretendard, 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', sans-serif" font-size="12.5" fill="#374151">옛 프로젝트 삭제</text>
+<text x="644.0" y="124" text-anchor="middle" font-family="Pretendard, 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', sans-serif" font-size="12.5" fill="#374151">CLAUDE.md 갱신</text>
+<text x="24" y="214" font-family="Pretendard, 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', sans-serif" font-size="12.5" fill="#4b5563">주소는 한 군데가 아니라 여러 곳에 흩어져 있었다</text>
+</svg>
