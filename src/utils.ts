@@ -26,3 +26,13 @@ export function readingMinutes(body: string | undefined): number {
 export function tagSlug(tag: string): string {
   return tag.toLowerCase().replace(/\s+/g, "-");
 }
+
+// 시리즈 주소도 태그와 같은 규칙: "블로그 직접 만들기" → /series/블로그-직접-만들기/
+export const seriesSlug = tagSlug;
+
+// 한 시리즈의 글을 1편부터 순서대로 (오래된 순)
+export function seriesPosts(posts: Post[], series: string): Post[] {
+  return posts
+    .filter((p) => p.data.series === series)
+    .sort((a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf());
+}

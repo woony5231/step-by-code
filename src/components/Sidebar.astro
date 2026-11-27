@@ -1,6 +1,6 @@
 ---
 import { CATEGORIES } from '../consts';
-import { getPosts, tagSlug } from '../utils';
+import { getPosts, tagSlug, seriesSlug } from '../utils';
 
 const posts = await getPosts();
 const categoryCounts = CATEGORIES.map((c) => ({
@@ -24,7 +24,11 @@ const series = [...new Set(posts.map((p) => p.data.series).filter(Boolean))] as 
   {series.length > 0 && (
     <section class="box">
       <h2>연재 중인 시리즈</h2>
-      <ul>{series.map((s) => <li><span style="display:block;padding:8px 0">{s}</span></li>)}</ul>
+      <ul>
+        {series.map((s) => (
+          <li><a href={`/series/${seriesSlug(s)}/`}><span>{s}</span><span class="count">{posts.filter((p) => p.data.series === s).length}</span></a></li>
+        ))}
+      </ul>
     </section>
   )}
   {topTags.length > 0 && (

@@ -1,0 +1,32 @@
+---
+// 시리즈별 글 목록 (1편부터 순서대로)
+import type { GetStaticPaths } from 'astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostCard from '../../components/PostCard.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import { getPosts, seriesSlug, seriesPosts } from '../../utils';
+
+export const getStaticPaths = (async () => {
+  const posts = await getPosts();
+  const names = [...new Set(posts.map((p) => p.data.series).filter(Boolean))] as string[];
+  return names.map((name) => ({
+    params: { series: seriesSlug(name) },
+    props: { name, posts: seriesPosts(posts, name) },
+  }));
+}) satisfies GetStaticPaths;
+
+const { name, posts } = Astro.props;
+---
+<BaseLayout title={`시리즈: ${name}`} description={`'${name}' 시리즈의 글 ${posts.length}개를 1편부터 순서대로 모았습니다.`}>
+  <div class="container">
+    <div class="page-head">
+      <p class="series-kicker">시리즈</p>
+      <h1>{name}</h1>
+      <p>글 {posts.length}개 · 1편부터 순서대로</p>
+    </div>
+    <div class="with-sidebar">
+      <section class="content">{posts.map((post) => <PostCard post={post} />)}</section>
+      <Sidebar />
+    </div>
+  </div>
+</BaseLayout>

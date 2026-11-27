@@ -3,7 +3,7 @@
 import type { GetStaticPaths } from 'astro';
 import { render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getPosts, formatDate, readingMinutes, tagSlug, type Post } from '../../utils';
+import { getPosts, formatDate, readingMinutes, tagSlug, seriesSlug, seriesPosts, type Post } from '../../utils';
 import { categorySlug } from '../../consts';
 
 export const getStaticPaths = (async () => {
@@ -22,7 +22,10 @@ interface Props {
 }
 const { post, newer, older, all } = Astro.props;
 const { Content, headings } = await render(post);
-const { title, description, pubDate, updatedDate, category, tags, draft } = post.data;
+const { title, description, pubDate, updatedDate, category, tags, series, draft } = post.data;
+// 시리즈 글이면 같은 시리즈 글 목록 (1편부터)
+const inSeries = series ? seriesPosts(all, series) : [];
+const seriesIndex = inSeries.findIndex((p) => p.id === post.id);
 const toc = headings.filter((h) => h.depth === 2 || h.depth === 3);
 const sameCategory = all
   .filter((p) => p.data.category === category && p.id !== post.id)
@@ -50,6 +53,25 @@ const sameCategory = all
       <div class="prose">
         <Content />
       </div>
+
+      {series && (
+        <nav class="series-box" aria-label="시리즈 글 목록">
+          <p class="series-head">
+            <span class="series-kicker">시리즈</span>
+            <a href={`/series/${seriesSlug(series)}/`}>{series}</a>
+            <span class="series-pos">{seriesIndex + 1} / {inSeries.length}</span>
+          </p>
+          <ol>
+            {inSeries.map((p) => (
+              <li>
+                {p.id === post.id
+                  ? <span aria-current="page">{p.data.title}</span>
+                  : <a href={`/blog/${p.id}/`}>{p.data.title}</a>}
+              </li>
+            ))}
+          </ol>
+        </nav>
+      )}
 
       {(older || newer) && (
         <nav class="post-nav" aria-label="이전 다음 글">

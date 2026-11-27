@@ -106,6 +106,19 @@ img { max-width: 100%; height: auto; }
 .box li a { display: flex; justify-content: space-between; padding: 8px 0; }
 .box .count { color: var(--text-muted); font-size: 13px; }
 
+/* 시리즈: 시리즈 페이지 머리말 + 글 아래 시리즈 목록 */
+.series-kicker { margin: 0 0 4px; font-size: 13px; font-weight: 700; color: var(--accent); }
+.series-box { margin-top: 48px; padding: 20px 24px; border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: 12px; background: var(--surface); }
+.series-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px; margin: 0 0 12px; }
+.series-head .series-kicker { margin: 0; }
+.series-head a { font-weight: 700; font-size: 17px; }
+.series-head a:hover { color: var(--accent); }
+.series-pos { margin-left: auto; font-size: 13px; color: var(--text-muted); }
+.series-box ol { margin: 0; padding-left: 22px; display: flex; flex-direction: column; gap: 6px; font-size: 15px; }
+.series-box li::marker { color: var(--text-muted); }
+.series-box a:hover { color: var(--accent); }
+.series-box [aria-current='page'] { font-weight: 700; color: var(--accent-strong); }
+
 /* 페이지 번호 */
 .pagination { display: flex; gap: 8px; justify-content: center; padding-top: 32px; }
 .pagination a, .pagination span {
