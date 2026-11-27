@@ -1,7 +1,7 @@
 // 사이트 전체에서 쓰는 기본 정보
 export const SITE_TITLE = '차근차근 코딩';
 export const SITE_DESCRIPTION =
-  '공공기관 웹 개발자의 트러블슈팅, 공부 노트, 사이드 프로젝트 개발기.';
+  '코딩을 하나도 모르던 사람이 Claude와 함께 하나씩 만들어 보는 기록.';
 export const GITHUB_URL = 'https://github.com/woony5231';
 export const POSTS_PER_PAGE = 10;
 
