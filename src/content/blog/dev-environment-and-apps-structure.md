@@ -4,7 +4,7 @@ description: "기차 앱, 또박또박, 축제 지도, 이 블로그가 어떤 �
 pubDate: 2026-11-27T22:00:00+09:00
 category: "개발환경·도구"
 tags: ["개발환경", "시스템 구조", "Cloudflare", "React", "Spring Boot"]
-draft: true
+draft: false
 ---
 
 앱이 여러 개가 되니 "이건 어디서 돌고, 뭘로 만들었더라?"가 헷갈리기 시작했다. 한 번에 볼 수 있게 그림으로 정리해 둔다.
