@@ -4,7 +4,7 @@ description: "2026년 11월 GitHub 인기 목록에서 자주 보이는 OpenClaw
 pubDate: 2026-11-27T23:30:00+09:00
 category: "공부노트"
 tags: ["오픈소스", "GitHub", "AI 에이전트", "Claude Code"]
-draft: true
+draft: false
 ---
 
 지난 글에서 오래 많이 쓰이는 대표 오픈소스를 정리했다. 이번에는 **요즘 GitHub에서 뜨는 것**을 봤다. 인기 목록을 모아 보는 사이트들을 훑어보니 AI 에이전트와 개발 도구 쪽이 눈에 많이 띄었다.

@@ -1,10 +1,10 @@
 ---
 title: "블로그 주소를 바꿨다: 고칠 곳이 생각보다 많았다"
 description: "step-by-code-7dd.pages.dev에서 chagun.pages.dev로 옮기며, 주소가 적혀 있던 곳을 하나씩 찾아 고친 기록."
-pubDate: 2026-11-28T09:00:00+09:00
+pubDate: 2026-11-27T23:50:00+09:00
 category: "개발기록"
 tags: ["Cloudflare Pages", "Astro", "주소", "og:image"]
-draft: true
+draft: false
 ---
 
 블로그 주소를 `step-by-code-7dd.pages.dev`에서 **`chagun.pages.dev`** 로 바꿨다. 주소만 바꾸면 끝일 줄 알았는데, 주소가 적힌 곳이 여러 군데라서 하나씩 찾아 고쳐야 했다.

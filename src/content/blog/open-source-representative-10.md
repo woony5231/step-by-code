@@ -4,7 +4,7 @@ description: "Linux, Git, React, Docker, PostgreSQL 등 개발하다 보면 계�
 pubDate: 2026-11-27T23:00:00+09:00
 category: "공부노트"
 tags: ["오픈소스", "GitHub", "Linux", "React", "Docker"]
-draft: true
+draft: false
 ---
 
 개발 공부를 하다 보면 "리눅스", "도커", "리액트" 같은 이름이 계속 나온다. 다 오픈소스라는데 정확히 뭔지 몰라서, 가장 많이 쓰이는 것부터 정리해 본다. 요즘 새로 뜨는 것들은 다음 글에서 따로 다룬다.
