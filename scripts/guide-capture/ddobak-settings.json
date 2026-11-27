@@ -1,0 +1,1 @@
+[{"go":"https://ddobak.pages.dev/","wait":2500},{"eval":"(document.querySelector(\"[aria-label=\\\"설정(테마·음성)\\\"]\").click(),\"ok\")","wait":1500,"shot":"07-settings","dump":true}]

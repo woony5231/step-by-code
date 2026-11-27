@@ -1,0 +1,11 @@
+[{"go":"https://gicha.pages.dev/","wait":2500,"shot":"01-home"},
+ {"role":["button","출발 · 역 또는 장소 서울"],"wait":1500},
+ {"click":"내 위치에서 가까운 역 찾기","wait":4000,"shot":"02-near"},
+ {"go":"https://gicha.pages.dev/","wait":2000},
+ {"click":"열차 찾기","exact":true,"wait":6000,"shot":"03-results"},
+ {"clickSel":"ul li button","wait":2500,"shot":"04-booking"},
+ {"go":"https://gicha.pages.dev/","wait":2000},
+ {"role":["button","출발 · 역 또는 장소 서울"],"wait":1500},
+ {"click":"강릉","exact":true,"wait":2000},
+ {"click":"열차 찾기","exact":true,"wait":12000,"shot":"05-transfer"},
+ {"clickSel":"ul li button","wait":2500,"shot":"06-transfer-detail","dump":true}]

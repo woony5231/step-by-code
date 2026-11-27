@@ -12,6 +12,7 @@ export const CATEGORIES = [
   { name: '오답노트', slug: 'wrong-note' },
   { name: '공부노트', slug: 'study' },
   { name: '개발환경·도구', slug: 'tools' },
+  { name: '사용설명서', slug: 'guide' },
 ] as const;
 
 export type CategoryName = (typeof CATEGORIES)[number]['name'];

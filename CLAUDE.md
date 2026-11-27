@@ -20,4 +20,5 @@
 - 주소를 step-by-code-7dd.pages.dev → chagun.pages.dev로 변경 (Cloudflare 새 Pages 프로젝트 `chagun`). 옛 프로젝트는 삭제함. 일일기록 #1의 링크는 새 주소로 고침. "Astro 선택 이유" 글에는 옛 주소가 설명 글로 남아 있음
 - 시리즈 기능: `/series/<이름>/` 목록 페이지(1편부터 순서), 사이드바 시리즈 링크, 글 아래 시리즈 목록 상자
 - 클로드 일일기록 자동 초안: 앱 예약 작업 `daily-claude-log`가 매일 23:30쯤 `scripts/daily-log-collect.mjs`로 재료를 모아 `claude-daily-YYYY-MM-DD.md`를 `draft: true`로 만든다(커밋 안 함). 공개는 사용자가 읽고 요청할 때 draft: false + 커밋·푸시. 설계: `docs/superpowers/specs/2026-11-27-daily-claude-log-design.md`
-- 다음 할 일: 예약 작업 첫 실행 결과(초안) 확인, 카카오 미리보기를 새 주소로 확인, 새 글 작성
+- 사용설명서 카테고리(`/category/guide/`) 추가: 기차 앱(`guide-gicha.md`), 또박또박(`guide-ddobak.md`). 캡처는 `src/content/blog/guides/<앱>/`, 다시 찍을 때는 `scripts/guide-capture/`(train-app의 Playwright + 설치된 Chrome 사용). 소개 페이지에 "사용법" 링크. 설계: `docs/superpowers/specs/2026-11-27-app-guides-design.md`
+- 다음 할 일: 앱 화면이 바뀌면 설명서 캡처 다시 찍기, 축제 지도 완성 후 설명서 추가, 앱 안에 "사용법" 링크 달기(선택), 카카오 미리보기를 새 주소로 확인, 새 글 작성
