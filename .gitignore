@@ -15,3 +15,6 @@ npm-debug.log*
 # OS
 .DS_Store
 Thumbs.db
+
+# Serena (코드 분석 도구) 자동 생성 폴더
+.serena/
