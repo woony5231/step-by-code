@@ -4,7 +4,7 @@ description: "링크 미리보기에 뜨는 공유 썸네일을 Astro 블로그�
 pubDate: 2026-11-27T21:00:00+09:00
 category: "공부노트"
 tags: ["Astro", "og:image", "카카오톡", "SEO"]
-draft: true
+draft: false
 ---
 
 블로그 링크를 카톡으로 보냈더니 그림 없이 글자만 덩그러니 떴다. 다른 사람들 링크에는 큰 그림이 같이 뜨는데, 어떻게 하는지 정리해 둔다.
